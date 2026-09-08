@@ -52,7 +52,7 @@
   // the code rides in the fragment (never sent to the server) or ?c=
   var raw = (location.hash || '').replace(/^#/, '') || new URLSearchParams(location.search).get('c') || '';
   var code = decodeURIComponent(raw).trim().toUpperCase();
-  var ok = /^DO[12]-[A-Z0-9-]{4,}$/.test(code);
+  var ok = /^DO[12]-[A-Z0-9~-]{4,}$/.test(code);   // ~HANDLE may ride on the end
   var store = ok ? STORE + '&referrer=' + encodeURIComponent('duel=' + code) : STORE;
   // Chrome on Android: open the app if it is installed, else fall through to the store
   var intent = 'intent://duel/' + encodeURIComponent(code) + '#Intent;scheme=deadon;package=' + PKG
